@@ -6,13 +6,30 @@ using System.Threading.Tasks;
 
 namespace Dictionaries.Opdrachten.Inventory
 {
+    enum ItemType
+    {
+        STONE, STICK, APPLE
+    }
+
+    enum Size
+    {
+        SMALL, MEDIUM, BIG
+    }
+
     class Item
     {
-        public Item(string _name)
+        public ItemType itemType;
+        public Size size;
+        public string name
         {
-            name = _name;
+            get { return "" + size.ToString() + " " + itemType.ToString(); }
         }
 
-        string name;
+
+        public Item(ItemType _itemType, Size _size)
+        {
+            itemType = _itemType;
+            size = _size;
+        }
     }
 }

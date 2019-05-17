@@ -10,6 +10,12 @@ namespace Dictionaries
 
             new Inventory();
 
+            Level newLevel = new Level();
+
+            newLevel.LevelBoot(20, 20);
+
+            newLevel.LevelShow();
+
             //new Dictionary_2();
         }
     }

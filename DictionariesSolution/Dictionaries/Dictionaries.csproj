@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Opdrachten\Dictionary_2.cs" />
     <Compile Include="Opdrachten\Dictionary_1.cs" />
+    <Compile Include="Opdrachten\Inventory\Level.cs" />
     <Compile Include="Opdrachten\Inventory\Framework\Position.cs" />
     <Compile Include="Opdrachten\Inventory\InputHandler.cs" />
     <Compile Include="Opdrachten\Inventory\Inventory.cs" />

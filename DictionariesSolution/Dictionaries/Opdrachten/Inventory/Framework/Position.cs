@@ -24,6 +24,21 @@ namespace Dictionaries.Opdrachten.Inventory.Framework
         {
             x += _x;
             y += _y;
+
+            if (x < 1)
+                x = 1;
+            else if (x > 19 - 1)
+                x = 19 - 1;
+
+            if (y < 1)
+                y = 1;
+            else if (y > 19 - 1)
+                y = 19 - 1;
+
+
+
+
+
         }
 
         public void Add(Position position)

@@ -4,17 +4,21 @@ namespace Dictionaries
 {
     class Program
     {
+        public static Level newLevel = new Level();
+        public static InputHandler inputHandler;
+        public static Inventory inventory;
+
         static void Main(string[] args)
         {
-            new InputHandler();
+            inputHandler = new InputHandler();
 
-            new Inventory();
+            inventory = new Inventory();
 
-            Level newLevel = new Level();
+            
 
             newLevel.LevelBoot(20, 20);
 
-            newLevel.LevelShow();
+            
 
             //new Dictionary_2();
         }

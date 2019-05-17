@@ -27,7 +27,7 @@ namespace Dictionaries.Opdrachten.Inventory
 
         public Inventory()
         {
-            currentPosition = new Position();
+            currentPosition = new Position(5, 5);
             inv = new Dictionary<Slot, List<Item>>();
             levelItems = new Dictionary<Position, Item>();
 
@@ -47,11 +47,35 @@ namespace Dictionaries.Opdrachten.Inventory
 
             foreach (Position pos in levelItems.Keys)
             {
-                if (pos.x == position.x && pos.y == position.y) return levelItems[pos];
+                if (pos.x == position.x && pos.y == position.y)
+                    return levelItems[pos];
             }
 
             return null;
+        }
 
+        public Position ItemLevelGetPosition(Position _position)
+        {
+            foreach (Position pos in levelItems.Keys)
+            {
+                //Check if the position is the same as the argument
+                if (pos.x == _position.x && pos.y == _position.y)
+                    return new Position(pos.x, pos.y);
+            }
+
+            return null;
+        }
+
+        public bool ItemLevelIsAtPosition(Position _position)
+        {
+            foreach (Position pos in levelItems.Keys)
+            {
+                //Check if the position is the same as the argument
+                if (pos.x == _position.x && pos.y == _position.y)
+                    return true;
+            }
+
+            return false;
         }
 
         void RemoveLevelItem(Position position)
@@ -71,9 +95,9 @@ namespace Dictionaries.Opdrachten.Inventory
 
             while (length > 0)
             {
-                int x = RandomNumber(-10, 10);
+                int x = RandomNumber(1, 18);
 
-                int y = RandomNumber(-10, 10);
+                int y = RandomNumber(1, 18);
 
                 Position pos = new Position(x, y);
 
@@ -83,9 +107,11 @@ namespace Dictionaries.Opdrachten.Inventory
 
                 levelItems.Add(pos, item);
 
-                Console.WriteLine("Position: (" + pos.x + ", " + pos.y + ") Item: " + item.name);
+                
+                //Console.WriteLine("Position: (" + pos.x + ", " + pos.y + ") Item: " + item.name);
                 length--;
             }
+            Console.WriteLine("Press ANY button to start");
         }
 
         Item RandomItem()
@@ -113,10 +139,10 @@ namespace Dictionaries.Opdrachten.Inventory
             switch (direction)
             {
                 case Direction.UP:
-                    currentPosition.Add(0, 1);
+                    currentPosition.Add(0, -1);
                     break;
                 case Direction.DOWN:
-                    currentPosition.Add(0, -1);
+                    currentPosition.Add(0, 1);
                     break;
                 case Direction.LEFT:
                     currentPosition.Add(-1, 0);
@@ -252,6 +278,8 @@ namespace Dictionaries.Opdrachten.Inventory
                 Console.WriteLine("Picked up item: NONE");
             else
                 Console.WriteLine("Picked up item: " + pickedUp.name);
+
+            Program.newLevel.LevelShow(currentPosition);
         }
     }
 }
